@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControleAcessoAuthorized.cs" />
+    <Compile Include="ControleAcessoNonAuthorized.cs" />
+    <Compile Include="IControleAcesso.cs" />
+    <Compile Include="IControleAcessoFactory.cs" />
+    <Compile Include="IControleAcessoStrategy.cs" />
     <Compile Include="IPermissaoService.cs" />
     <Compile Include="PermissaoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

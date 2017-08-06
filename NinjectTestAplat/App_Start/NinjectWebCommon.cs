@@ -7,19 +7,19 @@ namespace NinjectTestAplat.App_Start
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-    using Ninject.Web.WebApi.FilterBindingSyntax;
-    using Ninject;
-    using Ninject.Web.Common;
     using log4net;
-    using Ninject.Activation;
-    using Ninject.Web.Mvc.Filter;
     using Attributes;
     using System.Web.Http.Filters;
     using log4net.Core;
     using System.Linq;
     using AplatServices;
-    using System.Web.Http;
-    using Ninject.Web.WebApi;
+    using global::Ninject;
+    using global::Ninject.Activation;
+    using global::Ninject.Web.Mvc.Filter;
+    using global::Ninject.Extensions.Factory;
+    using global::Ninject.Web.WebApi.FilterBindingSyntax;
+    using global::Ninject.Web.Common;
+    using Ninject;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -73,6 +73,8 @@ namespace NinjectTestAplat.App_Start
             kernel.BindHttpFilter<LogFilter>(FilterScope.Controller)
                 .WithConstructorArgument("logLevel", Level.Info);
             kernel.Bind<IPermissaoService>().To<PermissaoService>();
+            kernel.Bind<IControleAcessoFactory>().ToFactory();
+            kernel.Bind<IControleAcesso>().ToProvider<CustomStrategyProvider>();
         }
 
         private static ILog GetLogger(IContext ctx)
