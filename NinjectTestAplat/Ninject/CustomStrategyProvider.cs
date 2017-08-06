@@ -13,13 +13,14 @@ namespace NinjectTestAplat.Ninject
     {
         protected override IControleAcesso CreateInstance(IContext context)
         {
-            var idNum = context.Parameters.FirstOrDefault(p => p.Name == "name");
-            var idNumValue = idNum.GetValue(context, null) as string;
+            var name = context.Parameters.Where(x => x.Name == "name").FirstOrDefault().GetValue(context, null) as string;
+            var tokenCA = context.Parameters.Where(x => x.Name == "tokenCA").FirstOrDefault().GetValue(context, null) as string;
+            var tokenAplat = context.Parameters.Where(x => x.Name == "tokenAplat").FirstOrDefault().GetValue(context, null) as string;
+            
+            if(string.IsNullOrEmpty(tokenCA))
+                return context.Kernel.Get<ControleAcessoNonAuthorized>();
 
-            if(idNumValue == "token")
-                return context.Kernel.Get<ControleAcessoAuthorized>();
-
-            return context.Kernel.Get<ControleAcessoNonAuthorized>();
+            return context.Kernel.Get<ControleAcessoAuthorized>();
         }
     }
 }

@@ -9,9 +9,13 @@ namespace AplatServices
     public class ControleAcessoAuthorized : IControleAcesso
     {
         private string name;
-        public ControleAcessoAuthorized(string name)
+        private string tokenCA;
+        private string tokenAplat;
+        public ControleAcessoAuthorized(string name, string tokenCA, string tokenAplat)
         {
             this.name = name;
+            this.tokenAplat = tokenAplat;
+            this.tokenCA = tokenCA;
         }
 
         public ControleAcessoAuthorized()
