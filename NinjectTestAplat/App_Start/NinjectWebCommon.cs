@@ -17,6 +17,9 @@ namespace NinjectTestAplat.App_Start
     using System.Web.Http.Filters;
     using log4net.Core;
     using System.Linq;
+    using AplatServices;
+    using System.Web.Http;
+    using Ninject.Web.WebApi;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -50,7 +53,6 @@ namespace NinjectTestAplat.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -70,6 +72,7 @@ namespace NinjectTestAplat.App_Start
             kernel.Bind<ILog>().ToMethod(GetLogger);
             kernel.BindHttpFilter<LogFilter>(FilterScope.Controller)
                 .WithConstructorArgument("logLevel", Level.Info);
+            kernel.Bind<IPermissaoService>().To<PermissaoService>();
         }
 
         private static ILog GetLogger(IContext ctx)

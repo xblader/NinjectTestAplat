@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AplatServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +11,16 @@ namespace NinjectTestAplat.Controllers
     //[LogFilter]
     public class ValuesController : ApiController
     {
+        private IPermissaoService _service;
+        public ValuesController(IPermissaoService service)
+        {
+            this._service = service;
+        }
+
+        public ValuesController()
+        {
+
+        }
         // GET api/values
         public IEnumerable<string> Get()
         {
