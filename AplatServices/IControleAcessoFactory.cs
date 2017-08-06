@@ -8,6 +8,6 @@ namespace AplatServices
 {
     public interface IControleAcessoFactory
     {
-        IControleAcesso Create(string name);
+        IControleAcesso Create(string name, string tokenCA, string tokenAplat);
     }
 }

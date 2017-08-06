@@ -1,4 +1,5 @@
 ﻿using AplatServices;
+using NinjectTestAplat.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.Http;
 
 namespace NinjectTestAplat.Controllers
 {
-    //[LogFilter]
+    //[AplatAuthorize]
     public class ValuesController : ApiController
     {
         private IPermissaoService _service;

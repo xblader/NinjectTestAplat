@@ -69,9 +69,10 @@ namespace NinjectTestAplat.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ILog>().ToMethod(GetLogger);
-            kernel.BindHttpFilter<LogFilter>(FilterScope.Controller)
-                .WithConstructorArgument("logLevel", Level.Info);
+            //kernel.Bind<ILog>().ToMethod(GetLogger);
+            //kernel.BindHttpFilter<LogFilter>(FilterScope.Controller)
+            //    .WithConstructorArgument("logLevel", Level.Info);
+            kernel.BindHttpFilter<AplatAuthorize>(FilterScope.Controller);
             kernel.Bind<IPermissaoService>().To<PermissaoService>();
             kernel.Bind<IControleAcessoFactory>().ToFactory();
             kernel.Bind<IControleAcesso>().ToProvider<CustomStrategyProvider>();

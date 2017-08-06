@@ -31,10 +31,10 @@ namespace NinjectTestAplat.Attributes
 
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            var queryString = actionContext.Request
-                        .GetQueryNameValuePairs()
-                        .ToDictionary(x => x.Key, x => x.Value);
-            IControleAcesso acesso = this.factory.Create(queryString["name"]);
+            //var queryString = actionContext.Request
+            //            .GetQueryNameValuePairs()
+            //            .ToDictionary(x => x.Key, x => x.Value);
+            //IControleAcesso acesso = this.factory.Create(queryString["name"]);
             //this.log.DebugFormat(
             //    "Executing action {0}.{1}",
             //    actionContext.ActionDescriptor.ControllerDescriptor.ControllerName,
