@@ -1,4 +1,5 @@
 ﻿using AplatServices;
+using Ninject;
 using NinjectTestAplat.Attributes;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace NinjectTestAplat.Controllers
     public class ValuesController : ApiController
     {
         private IPermissaoService _service;
-        public ValuesController(IPermissaoService service)
+        private IControleAcesso acesso;
+        public ValuesController(IPermissaoService service, IControleAcesso acesso)
         {
             this._service = service;
+            this.acesso = acesso;
         }
 
         public ValuesController()

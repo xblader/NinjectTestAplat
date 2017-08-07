@@ -8,5 +8,6 @@ namespace AplatServices
 {
     public interface IControleAcesso
     {
+        string LoggedUser();
     }
 }

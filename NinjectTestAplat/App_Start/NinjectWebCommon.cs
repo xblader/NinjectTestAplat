@@ -73,9 +73,9 @@ namespace NinjectTestAplat.App_Start
             //kernel.BindHttpFilter<LogFilter>(FilterScope.Controller)
             //    .WithConstructorArgument("logLevel", Level.Info);
             kernel.BindHttpFilter<AplatAuthorize>(FilterScope.Controller);
-            kernel.Bind<IPermissaoService>().To<PermissaoService>();
-            kernel.Bind<IControleAcessoFactory>().ToFactory();
-            kernel.Bind<IControleAcesso>().ToProvider<CustomStrategyProvider>();
+            kernel.Bind<IPermissaoService>().To<PermissaoService>().InRequestScope(); 
+            kernel.Bind<IControleAcessoFactory>().ToFactory().InRequestScope();
+            kernel.Bind<IControleAcesso>().ToProvider<CustomStrategyProvider>().InRequestScope(); 
         }
 
         private static ILog GetLogger(IContext ctx)

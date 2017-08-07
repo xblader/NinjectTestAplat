@@ -18,5 +18,10 @@ namespace AplatServices
         {
 
         }
+
+        public string LoggedUser()
+        {
+            return this.name;
+        }
     }
 }
